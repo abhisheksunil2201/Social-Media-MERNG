@@ -59,6 +59,7 @@ function SinglePost(props) {
       likes,
       likeCount,
       commentCount,
+      media,
     } = getPost;
 
     postMarkup = (
@@ -180,6 +181,7 @@ const FETCH_POST_QUERY = gql`
         createdAt
         body
       }
+      media
     }
   }
 `;

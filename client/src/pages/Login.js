@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 import { AuthContext } from "../context/auth";
 import { useForm } from "../util/hooks";
 
-function Register() {
+function Login() {
   const context = useContext(AuthContext);
   const history = useHistory();
   const [errors, setErrors] = useState({});
@@ -82,4 +82,4 @@ const LOGIN_USER = gql`
   }
 `;
 
-export default Register;
+export default Login;

@@ -6,21 +6,22 @@ import { AuthContext } from "../context/auth";
 import PostCard from "../components/PostCard";
 import PostForm from "../components/PostForm";
 import { FETCH_POSTS_QUERY } from "../util/graphql";
+import "./Home.css";
 
 function Home() {
   const { user } = useContext(AuthContext);
   const { loading, data } = useQuery(FETCH_POSTS_QUERY);
 
   return (
-    <Grid columns={3} divided>
+    <Grid columns={1} divided>
       <Grid.Row className="page-title">
         <h1>Recent Posts</h1>
       </Grid.Row>
       <Grid.Row>
         {user && (
-          <Grid.Column>
+          <div className="createPost">
             <PostForm />
-          </Grid.Column>
+          </div>
         )}
         {loading ? (
           <h1>Loading posts..</h1>

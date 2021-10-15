@@ -7,9 +7,19 @@ import { AuthContext } from "../context/auth";
 import LikeButton from "./LikeButton";
 import DeleteButton from "./DeleteButton";
 import MyPopup from "../util/MyPopup";
+import "./PostCard.css";
 
 function PostCard({
-  post: { body, createdAt, id, username, likeCount, commentCount, likes },
+  post: {
+    body,
+    media,
+    createdAt,
+    id,
+    username,
+    likeCount,
+    commentCount,
+    likes,
+  },
 }) {
   const { user } = useContext(AuthContext);
 
@@ -17,7 +27,7 @@ function PostCard({
     <Card fluid>
       <Card.Content>
         <Image
-          floated="right"
+          floated="left"
           size="mini"
           src="https://react.semantic-ui.com/images/avatar/large/molly.png"
         />
@@ -26,6 +36,7 @@ function PostCard({
           {moment(createdAt).fromNow(true)}
         </Card.Meta>
         <Card.Description>{body}</Card.Description>
+        {media && <img className="post__img" src={media} alt="userPost" />}
       </Card.Content>
       <Card.Content extra>
         <LikeButton user={user} post={{ id, likes, likeCount }} />
